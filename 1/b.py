@@ -1,16 +1,15 @@
 with open("input.txt") as inp:
     depths = [int(line) for line in inp]
 
-first = depths[0]
-second = depths[1]
-third = depths[2]
-ans = 0
-for d in depths[3:]:
-    tmp = first + second + third
-    if tmp - first + d > tmp:
-        ans += 1
-    first = second
-    second = third
-    third = d
+# one-liner
+print(sum(sum(depths[i-3:i]) > sum(depths[i-4:i-1]) for i in range(4, len(depths))))
 
+# slightly faster
+prev = depths[0] + depths[1] + depths[2]
+ans = 0
+for i, d in enumerate(depths[3:]):
+    nxt = prev - depths[i] + d
+    if nxt > prev:
+        ans += 1
+    prev = nxt
 print(ans)
