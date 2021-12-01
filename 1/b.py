@@ -2,7 +2,7 @@ with open("input.txt") as inp:
     depths = [int(line) for line in inp]
 
 # one-liner
-print(sum(sum(depths[i-3:i]) > sum(depths[i-4:i-1]) for i in range(4, len(depths))))
+print(sum(sum(depths[i-3:i]) > sum(depths[i-4:i-1]) for i in range(4, len(depths)+1)))
 
 # slightly faster
 prev = depths[0] + depths[1] + depths[2]
