@@ -10,7 +10,6 @@ class Board:
             for pair in line:
                 if pair[0] == number:
                     pair[1] = True
-                    #print("marked {}".format(number))
 
     def check_victory(self):
         #check rows
@@ -18,7 +17,7 @@ class Board:
             if all(pair[1] for pair in row):
                 return True
         #check columns
-        for i in range(len(row[0])):
+        for i in range(len(self.board[0])):
             if all(pair[1] for pair in [row[i] for row in self.board]):
                 return True
         return False
@@ -39,8 +38,6 @@ with open("input.txt") as inp:
 
 for number in numbers:
     for board in boards:
-        #print(number, board.board)
         board.mark_number(number)
         if board.check_victory():
             print(board.score() * number)
-            break

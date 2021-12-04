@@ -1,16 +1,12 @@
 class Board:
     def __init__(self, numbers):
         self.board = [[[n, False] for n in line] for line in numbers]
-        self.numbers = set()
-        for line in numbers:
-            self.numbers &= set(line)
 
     def mark_number(self, number):
         for line in self.board:
             for pair in line:
                 if pair[0] == number:
                     pair[1] = True
-                    #print("marked {}".format(number))
 
     def check_victory(self):
         #check rows
